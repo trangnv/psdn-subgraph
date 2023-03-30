@@ -1,0 +1,86 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  src: Bytes! # address
+  guy: Bytes! # address
+  wad: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Burn @entity(immutable: true) {
+  id: Bytes!
+  guy: Bytes! # address
+  wad: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DelegateChanged @entity(immutable: true) {
+  id: Bytes!
+  delegator: Bytes! # address
+  fromDelegate: Bytes! # address
+  toDelegate: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DelegateVotesChanged @entity(immutable: true) {
+  id: Bytes!
+  delegate: Bytes! # address
+  previousBalance: BigInt! # uint256
+  newBalance: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LogNote @entity(immutable: true) {
+  id: Bytes!
+  sig: Bytes! # bytes4
+  guy: Bytes! # address
+  foo: Bytes! # bytes32
+  bar: Bytes! # bytes32
+  wad: BigInt! # uint256
+  fax: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LogSetAuthority @entity(immutable: true) {
+  id: Bytes!
+  authority: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LogSetOwner @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Mint @entity(immutable: true) {
+  id: Bytes!
+  guy: Bytes! # address
+  wad: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  src: Bytes! # address
+  dst: Bytes! # address
+  wad: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

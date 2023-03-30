@@ -1,0 +1,48 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PSDN
+    network: mainnet
+    source:
+      address: "0xA5B947687163FE88C3e6af5b17Ae69896F4abccf"
+      abi: PSDN
+      startBlock: 14287862
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Burn
+        - DelegateChanged
+        - DelegateVotesChanged
+        - LogNote
+        - LogSetAuthority
+        - LogSetOwner
+        - Mint
+        - Transfer
+      abis:
+        - name: PSDN
+          file: ./abis/PSDN.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Burn(indexed address,uint256)
+          handler: handleBurn
+        - event: DelegateChanged(indexed address,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: DelegateVotesChanged(indexed address,uint256,uint256)
+          handler: handleDelegateVotesChanged
+        - event: LogNote(indexed bytes4,indexed address,indexed bytes32,indexed bytes32,uint256,bytes)
+          handler: handleLogNote
+        - event: LogSetAuthority(indexed address)
+          handler: handleLogSetAuthority
+        - event: LogSetOwner(indexed address)
+          handler: handleLogSetOwner
+        - event: Mint(indexed address,uint256)
+          handler: handleMint
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/psdn.ts
